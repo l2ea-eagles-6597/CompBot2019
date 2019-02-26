@@ -43,7 +43,15 @@ public class DriveCmd extends Command {
     @Override
     protected void execute() {
         //Robot.driveSub.drive(Robot.oi.driveController.getRawAxis(1), Robot.oi.driveController.getRawAxis(0));
-        Robot.driveSub.drive(Robot.oi.driveController.getX(), Robot.oi.driveController.getY() * -1);
+
+        double x=Robot.oi.driveController.getX();
+        double y=Robot.oi.driveController.getRawAxis(2);
+        boolean halfspeed=Robot.oi.driveController.getRawButton(1)&& Robot.oi.driveController.getRawButton(2);
+        if(halfspeed){
+            x=x/2;
+            y=y/2;
+        }
+        Robot.driveSub.drive(Robot.oi.driveController.getX(), Robot.oi.driveController.getRawAxis(2) * -1);
     }
         
     // Make this return true when this Command no longer needs to run execute()
