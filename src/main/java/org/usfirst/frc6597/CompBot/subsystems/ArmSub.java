@@ -109,11 +109,11 @@ public void stop(){
 public void move (){
     double currentposition=pot1.get();
     double error=desiredposition-currentposition;
-if(error>0){
+if(error>0.001){
     driveup();
 
 }
-else if(error<0){
+else if(error<-0.001){
     drivedown();
 }
 }
