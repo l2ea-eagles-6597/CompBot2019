@@ -43,6 +43,24 @@ public class ArmCmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+       if(Robot.oi.copController.getRawButton(1)){
+           Robot.armSub.desiredposition=Robot.armSub.POSITION_BALL;
+       }
+       if(Robot.oi.copController.getRawButton(2)){
+        Robot.armSub.desiredposition=Robot.armSub.POSITION_C1;
+    }
+    if(Robot.oi.copController.getRawButton(3)){
+        Robot.armSub.desiredposition=Robot.armSub.POSITION_HATCH;
+    }
+    if(Robot.oi.copController.getRawButton(6)){
+        Robot.armSub.desiredposition=Robot.armSub.POSITION_R2;
+    }
+    if(Robot.oi.copController.getRawButton(4)){
+        Robot.armSub.desiredposition=Robot.armSub.POSITION_R1;
+    }
+       
+       
+        Robot.armSub.move();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -54,6 +72,7 @@ public class ArmCmd extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
+        Robot.armSub.stop();
     }
 
     // Called when another command which requires one or more of the same
