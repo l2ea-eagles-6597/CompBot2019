@@ -79,6 +79,15 @@ public void close(){
 solenoid1.set(Value.kReverse);
 
 }
+
+public void toggle(){
+    if(solenoid1.get() == Value.kForward){
+        close();
+    }
+    else{
+        open();
+    }
+}
 }
 
 

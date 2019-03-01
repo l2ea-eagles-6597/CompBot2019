@@ -64,7 +64,7 @@ public class OI {
         copController = new Joystick(1);
         
         joystickButton1 = new JoystickButton(copController, 5);
-        joystickButton1.whileHeld(new GrabCmd());
+        joystickButton1.whenPressed(new GrabCmd());
         driveController = new Joystick(0);
         
 
