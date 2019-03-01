@@ -37,7 +37,7 @@ public class ArmSub extends Subsystem {
 public final double POSITION_BALL=1.0;
 public final double POSITION_HATCH=.9;
 public final double POSITION_R1=.75;
-public final double POSITION_R2=.7;
+public final double POSITION_R2=.55;
 public final double POSITION_C1=.9;
     public double desiredposition=POSITION_HATCH;
 
@@ -95,11 +95,19 @@ public final double POSITION_C1=.9;
     // here. Call these from Commands.
 public void driveup (){
     aleft.set(.3);
-    aright.set(.3);
+    aright.set(.2);
 } 
 public void drivedown (){
     aleft.set(-.3);
     aright.set(-.3);
+}
+public void driveupfast (){
+    aleft.set(.5);
+    aright.set(.5);
+} 
+public void drivedownfast (){
+    aleft.set(-.5);
+    aright.set(-.5);
 }
 public void stop(){
     aleft.set(0);
@@ -110,16 +118,26 @@ public void stop(){
 public void move (){
     double currentposition=pot1.get();
     double error=desiredposition-currentposition;
-if(error>0.09){
-    driveup();
-
-}
-else if(error<-0.09){
-    drivedown();
-}
-else {
-    stop();
-}
+    if(Math.abs(error) > 0.15){
+        if (error > 0){
+            driveupfast();
+        }
+        else {
+            drivedownfast();
+        }
+    }
+    else if(Math.abs(error) > 0.09){
+        if(error>0){
+            driveup();
+        
+        }
+        else if(error<0){
+            drivedown();
+        }
+    }
+    else {
+        stop();
+    }
 }
 
 
