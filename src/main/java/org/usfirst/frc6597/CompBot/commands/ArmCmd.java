@@ -60,8 +60,8 @@ public class ArmCmd extends Command {
     }
         if(Math.abs(Robot.oi.copController.getRawAxis(3)) > 0.3){
             Robot.armSub.desiredposition += (Robot.oi.copController.getRawAxis(3) * 0.001);
-            if(Robot.armSub.desiredposition < Robot.armSub.POSITION_R2){
-                Robot.armSub.desiredposition = Robot.armSub.POSITION_R2;
+            if(Robot.armSub.desiredposition < Robot.armSub.POSITION_TOP){
+                Robot.armSub.desiredposition = Robot.armSub.POSITION_TOP;
             }
             else if(Robot.armSub.desiredposition > Robot.armSub.POSITION_BALL){
                 Robot.armSub.desiredposition = Robot.armSub.POSITION_BALL;
